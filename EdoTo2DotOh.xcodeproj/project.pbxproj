@@ -14,6 +14,7 @@
 		E4B34A882B0978950000C56E /* MIDIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B34A872B0978950000C56E /* MIDIUtils.swift */; };
 		E4B34A8C2B0E934D0000C56E /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B34A8B2B0E934D0000C56E /* Data.swift */; };
 		E4F9CBF72B0FB0E900E2C607 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9CBF62B0FB0E900E2C607 /* ResultsView.swift */; };
+		E4F9CBF92B0FBB2100E2C607 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = E4F9CBF82B0FBB2100E2C607 /* Readme.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E4B34A872B0978950000C56E /* MIDIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIUtils.swift; sourceTree = "<group>"; };
 		E4B34A8B2B0E934D0000C56E /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		E4F9CBF62B0FB0E900E2C607 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		E4F9CBF82B0FBB2100E2C607 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 		E4B34A6D2B09741D0000C56E = {
 			isa = PBXGroup;
 			children = (
+				E4F9CBF82B0FBB2100E2C607 /* Readme.md */,
 				E4B34A782B09741D0000C56E /* EdoTo2DotOh */,
 				E4B34A772B09741D0000C56E /* Products */,
 			);
@@ -136,6 +139,7 @@
 			files = (
 				E4B34A812B09741E0000C56E /* Preview Assets.xcassets in Resources */,
 				E4B34A7E2B09741E0000C56E /* Assets.xcassets in Resources */,
+				E4F9CBF92B0FBB2100E2C607 /* Readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
