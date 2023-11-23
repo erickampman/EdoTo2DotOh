@@ -18,7 +18,6 @@ struct ResultsView: View {
 			}
 		}
 		.border(.gray)
-
     }
 }
 

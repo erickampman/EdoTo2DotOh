@@ -67,7 +67,7 @@ struct ContentView: View {
 	let octaveCount = 9
 
     var body: some View {
-		NavigationView {
+		NavigationStack {
 			Form() {
 				Section(header: Text("EDO to MIDI 2.0 7.9 Conversion")) {
 					Picker("Note in Common With 12-EDO", selection: $noteInCommonWith12EDO) {
@@ -80,13 +80,6 @@ struct ContentView: View {
 							Text("\(octave)")
 						}
 					}
-//					HStack {
-//						Text("Note in Common (0-127):")
-//						TextField("Note in Common", value: $noteInCommon, formatter: NumberFormatter())
-//							.frame(width: 100)
-//							.border(.black)
-//					}
-					
 					HStack() {
 						Text("Notes per Octave (5-72):")
 						Spacer()
@@ -112,6 +105,7 @@ struct ContentView: View {
 							ResultsView(mappings: mappings)
 						}
 					}
+
 				}
 				
 			}
@@ -125,6 +119,7 @@ struct ContentView: View {
 //			}
 //			.border(.gray)
 		}
+
 
     }
 	
