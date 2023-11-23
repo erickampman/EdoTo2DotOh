@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct EdoTo2DotOhApp: App {
+	
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			ContentView()
         }
     }
 }
