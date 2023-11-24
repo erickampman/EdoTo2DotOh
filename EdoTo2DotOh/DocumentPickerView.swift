@@ -9,16 +9,30 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct DocumentPickerView: UIViewControllerRepresentable {
-	var nameFragment: String
+	var data: [FrequencyOctaveNote]
+	var documentPicker: UIDocumentPickerViewController!
+	let tempFileName = "temp.txt"
+	var jsonData = Data()
 	
-	@State var documentPicker: UIDocumentPickerViewController!
-	
-	init(_ nameFragment: String) {
+	init(data: [FrequencyOctaveNote]) {
 		let path: URL = FileManager.default.temporaryDirectory
-		let dURL = path.appendingPathComponent("test.tmp", conformingTo: UTType.text)
+		let dURL = path.appendingPathComponent(tempFileName, conformingTo: UTType.text)
+		self.data = data
+
+		let encoder = JSONEncoder()
+		encoder.outputFormatting = .prettyPrinted
+		do {
+			let json = try encoder.encode(data)
+			jsonData = json
+			
+			try jsonData.write(to: dURL)
+			
+			self.documentPicker = UIDocumentPickerViewController(forExporting: [dURL], asCopy: true)
+
+		} catch {
+			fatalError("JSON save failed")
+		}
 		
-		documentPicker = UIDocumentPickerViewController(forExporting: [dURL], asCopy: true)
-		self.nameFragment = nameFragment
 	}
 		
 	func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
@@ -34,7 +48,7 @@ struct DocumentPickerView: UIViewControllerRepresentable {
 	}
 	
 	func makeCoordinator() -> Coordinator {
-		Coordinator(vc: documentPicker, parent: self)
+		return Coordinator(vc: documentPicker, parent: self)
 	}
 	
 	class Coordinator: NSObject, UIDocumentPickerDelegate {

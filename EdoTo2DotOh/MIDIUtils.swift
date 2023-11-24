@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftData
 
+#if false
 let firstOctaveFrequencies = [
 	8.176,		// C-1, midi note 0
 	8.662,
@@ -40,6 +41,7 @@ func semitoneRoots() -> [Double] {
 	
 	return ret
 }
+#endif
 
 let MIN = 0.005
 func closeEnough(delta: Double) -> Bool { abs(delta) < MIN }
@@ -116,7 +118,7 @@ func frequencyFor(noteInCommon: Int, notesPerOctave: Int, octavesAbove: Int, not
 	return baseOctaveFrequency * pow(2.0, Double(noteInOctave)/Double(notesPerOctave))
 }
 
-struct FrequencyOctaveNote: Identifiable {
+struct FrequencyOctaveNote: Identifiable, Codable {
 	@Attribute(.unique) let id: Double
 //	let octave: Int
 	let note: Int

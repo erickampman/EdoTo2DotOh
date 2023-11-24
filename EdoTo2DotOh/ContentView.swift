@@ -5,6 +5,9 @@
 //  Created by Eric Kampman on 11/18/23.
 //
 
+import Foundation
+import UIKit
+import UniformTypeIdentifiers
 import SwiftUI
 
 
@@ -62,6 +65,7 @@ struct ContentView: View {
 	@State var startingOctave = Int(3)
 	@State var mappings = [FrequencyOctaveNote]()
 	@State var fileName = ""
+	@State var showSave = false
 	
 	let octavesBelow = 4
 	let octaveCount = 9
@@ -92,35 +96,29 @@ struct ContentView: View {
 						Button("Calculate") {
 							calculate()
 						}
-						if UIDevice.current.userInterfaceIdiom == .pad ||
-						   UIDevice.current.userInterfaceIdiom == .mac
-						{
-							Button("Save Data") {
-								saveData()
-							}
-							TextField("File Name", text: $fileName)
-						}
 						Spacer()
 						NavigationLink("Display") {
 							ResultsView(mappings: mappings)
 						}
 					}
-
 				}
-				
 			}
 			.border(.gray)
 			.navigationTitle("EDO Calculator")
-//			ScrollView {
-//				ForEach(mappings) { mapping in
-//					Text("\(mapping.frequency) - \(mapping.note) - \(mapping.fraction512)")
-//						.padding([.leading, .trailing])
-//				}
-//			}
-//			.border(.gray)
+			.toolbar {
+				if UIDevice.current.userInterfaceIdiom == .pad ||
+				   UIDevice.current.userInterfaceIdiom == .mac
+				{
+					Button("Save Data") {
+						self.showSave.toggle()
+					}.sheet(isPresented: $showSave, content: {
+//						SaveFileView()
+						DocumentPickerView(data: mappings)
+					})
+					.disabled(mappings.count == 0)
+				}
+			}
 		}
-
-
     }
 	
 	func getDocumentsDirectory() -> URL {
@@ -165,13 +163,12 @@ struct ContentView: View {
 				print(error.localizedDescription)
 			}
 		}
-
 	}
 	
 	func calculate() {
 		// number of notes is dependent on how many notes per octave. MIDI can represent 128 notes (0 - 127)
 		
-		let midiNotesTotal = Int(128)
+//		let midiNotesTotal = Int(128)
 //		let available = midiNotesTotal - noteInCommonWith12EDO.rawValue - startingOctave * 12
 //		let octavesAvailable = available / notesPerOctave
 		
