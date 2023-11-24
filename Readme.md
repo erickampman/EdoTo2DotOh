@@ -10,9 +10,8 @@ Section 4.2.14.3 MIDI2.0NoteOnWithAttribute#3Pitch7.9
 As of yet these values have not been tested for accuracy. 
 
 ## TODO
-- Test on something besides Mac Designed for iPad
+- Test on something besides Mac Catalyst
 - UI is ugly
-- Want to export as JSON
-- Hard to find result file (save file panel for MacOS)
+
 
 
